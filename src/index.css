@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary-500: #0056a6;
+  --color-primary-400: #0587ff;
+  --color-secondary-500: #fd8c73;
+
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f8f8f8;
+  --color-neutral-200: #c4c4c4;
+  --color-neutral-300: #bfbfbf;
+  --color-neutral-400: #989898;
+
+  --color-error: #fe354d;
+  --color-header: #24292e;
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-neutral-50);
+    color: var(--color-neutral-400);
+  }
+}
