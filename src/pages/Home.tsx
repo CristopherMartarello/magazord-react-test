@@ -1,10 +1,12 @@
 import ProfileCard from "../components/ProfileCard";
+import Tabs from "../components/Tabs";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-400">
-      <div className="flex justify-center p-4 sm:p-6 md:p-8">
-        <ProfileCard />
+    <div className="flex min-h-screen flex-col items-center justify-start bg-neutral-50 p-7 text-neutral-400">
+      <ProfileCard />
+      <div className="mt-8 flex w-full">
+        <Tabs />
       </div>
     </div>
   );
