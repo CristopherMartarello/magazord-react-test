@@ -6,6 +6,8 @@ import InstagramIcon from "./instagram.svg?react";
 import LinkedinIcon from "./linkedin.svg?react";
 import BookmarkIcon from "./bookmark.svg?react";
 import StarIcon from "./star.svg?react";
+import SearchIcon from "./search.svg?react";
+import XIcon from "./x.svg?react";
 
 export {
   ChevronDownIcon,
@@ -16,4 +18,6 @@ export {
   LinkedinIcon,
   BookmarkIcon,
   StarIcon,
+  SearchIcon,
+  XIcon,
 };

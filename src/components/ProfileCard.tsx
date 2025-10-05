@@ -52,8 +52,8 @@ const ProfileCard = () => {
           {user?.bio}
         </p>
       </div>
-      <div className="flex flex-col items-center">
-        <span className="text-primary-400 mt-4">Informações Adicionais</span>
+      <div className="text-primary-400 flex flex-col items-center">
+        <span className="mt-4">Informações Adicionais</span>
         <ChevronDownIcon
           className={`mb-2 h-6 w-6 transform transition-transform duration-200 ease-in-out ${collapse ? "rotate-180" : "rotate-0"}`}
           onClick={() => handleAdditionalClickInfo()}

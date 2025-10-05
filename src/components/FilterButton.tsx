@@ -1,0 +1,21 @@
+import { ChevronDownIcon } from "lucide-react";
+
+interface FilterButtonProps {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}
+
+export function FilterButton({ label, active, onClick }: FilterButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className="from-primary-500 to-primary-400 flex items-center rounded-full bg-gradient-to-r px-3 py-2 pr-5 text-sm font-medium text-white shadow-sm"
+    >
+      <ChevronDownIcon
+        className={`mr-2 h-4 w-4 transform text-white transition-transform duration-200 ease-in-out ${active ? "rotate-180" : "rotate-0"} `}
+      />
+      <span className="text-sm">{label}</span>
+    </button>
+  );
+}

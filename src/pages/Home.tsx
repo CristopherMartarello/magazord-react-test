@@ -1,4 +1,5 @@
 import ProfileCard from "../components/ProfileCard";
+import SearchBar from "../components/SearchBar";
 import Tabs from "../components/Tabs";
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
       <div className="mt-8 flex w-full">
         <Tabs />
       </div>
+      <SearchBar />
     </div>
   );
 };
