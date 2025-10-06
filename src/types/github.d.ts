@@ -26,4 +26,9 @@ export interface GithubRepo {
   visibility: "public" | "private";
   mirror_url: string | null;
   open_issues: number;
+  owner: {
+    avatar_url: string;
+    login: string;
+    html_url: string;
+  };
 }

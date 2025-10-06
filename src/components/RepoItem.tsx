@@ -1,6 +1,7 @@
 import { BranchFork, StarFilled } from "@/assets/icons";
 import { useGithubStore } from "@/store/githubStore";
 import type { GithubRepo } from "@/types/github";
+import { useNavigate } from "react-router-dom";
 
 interface RepoItemProps {
   item: GithubRepo;
@@ -8,8 +9,13 @@ interface RepoItemProps {
 
 const RepoItem = ({ item }: RepoItemProps) => {
   const { activeTab } = useGithubStore();
+  const navigate = useNavigate();
+
   return (
-    <div className="flex flex-col space-y-3 border-b border-b-neutral-100 bg-white pb-5 text-black">
+    <div
+      className="flex flex-col space-y-3 border-b border-b-neutral-100 bg-white pb-5 text-black"
+      onClick={() => navigate(`/repo/${item.name}`)}
+    >
       <div className="flex items-center gap-1 text-lg">
         <span className="font-light">{item.full_name.split("/")[0]}</span>
         <span className="font-normal">/</span>
@@ -17,7 +23,9 @@ const RepoItem = ({ item }: RepoItemProps) => {
           {item.name}
         </span>
       </div>
-      <span className="text-neutral-400">{item.description}</span>
+      <span className="text-sm font-normal text-neutral-400">
+        {item.description}
+      </span>
       <div className="flex items-center gap-10">
         {activeTab === "repositories" ? (
           <span className="flex items-center gap-2">
