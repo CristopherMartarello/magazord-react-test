@@ -34,7 +34,6 @@ export function FilterDrawer({
   return (
     <Drawer open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <DrawerContent className="min-h-screen bg-white shadow-lg transition-all duration-300">
-        <div className="mx-auto h-2 w-[100px] rounded-full bg-neutral-200" />
         <DrawerHeader className="flex items-center justify-between">
           <DrawerTitle className="flex w-full justify-between text-lg">
             <span className="text-2xl font-bold text-black">{title}</span>

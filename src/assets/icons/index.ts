@@ -8,6 +8,8 @@ import BookmarkIcon from "./bookmark.svg?react";
 import StarIcon from "./star.svg?react";
 import SearchIcon from "./search.svg?react";
 import XIcon from "./x.svg?react";
+import BranchFork from "./branch-fork.svg?react";
+import StarFilled from "./star-filled.svg?react";
 
 export {
   ChevronDownIcon,
@@ -20,4 +22,6 @@ export {
   StarIcon,
   SearchIcon,
   XIcon,
+  BranchFork,
+  StarFilled,
 };

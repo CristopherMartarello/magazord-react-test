@@ -3,22 +3,21 @@ import { useGithubStore } from "../store/githubStore";
 import TabItem from "./TabItem";
 
 const Tabs = () => {
-  const activeTab = useGithubStore((state) => state.activeTab);
-  const setActiveTab = useGithubStore((state) => state.setActiveTab);
+  const { activeTab, setActiveTab, repoCount, starredCount } = useGithubStore();
 
   return (
     <div className="flex w-full justify-between">
       <TabItem
         icon={<BookmarkIcon />}
         label={"Repositories"}
-        count={12}
+        count={repoCount}
         onTabClick={() => setActiveTab("repositories")}
         isActive={activeTab === "repositories"}
       />
       <TabItem
         icon={<StarIcon />}
         label={"Starred"}
-        count={5}
+        count={starredCount}
         onTabClick={() => setActiveTab("starred")}
         isActive={activeTab === "starred"}
       />

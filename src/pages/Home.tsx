@@ -1,3 +1,4 @@
+import RepoList from "@/components/RepoList";
 import ProfileCard from "../components/ProfileCard";
 import SearchBar from "../components/SearchBar";
 import Tabs from "../components/Tabs";
@@ -10,6 +11,7 @@ const Home = () => {
         <Tabs />
       </div>
       <SearchBar />
+      <RepoList />
     </div>
   );
 };

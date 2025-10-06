@@ -3,19 +3,32 @@ import { useGithubStore } from "../store/githubStore";
 import { FilterDrawer } from "./FilterDrawer";
 import { SearchIcon, XIcon } from "../assets/icons";
 import { FilterButton } from "./FilterButton";
-
-const repoTypes = ["All", "Sources", "Forks", "Archived", "Mirrors"];
-const languages = ["All", "Java", "TypeScript", "HTML", "CSS"];
+import { REPO_TYPES, LANGUAGES } from "@/constants/githubFilters";
 
 export default function SearchBar() {
-  const { repoType, language, setRepoType, setLanguage } = useGithubStore();
+  const {
+    repoType,
+    language,
+    searchTerm,
+    setRepoType,
+    setLanguage,
+    setSearchTerm,
+  } = useGithubStore();
   const [drawer, setDrawer] = useState<"type" | "language" | null>(null);
   const [searchActive, setSearchActive] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [localTerm, setLocalTerm] = useState(searchTerm);
 
   const handleToggleSearch = () => {
-    if (searchActive) setSearchTerm("");
+    if (searchActive) {
+      setLocalTerm("");
+      setSearchTerm("");
+    }
     setSearchActive(!searchActive);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchTerm(localTerm.trim());
   };
 
   return (
@@ -42,27 +55,28 @@ export default function SearchBar() {
           </button>
         </div>
       ) : (
-        <div className="flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2">
           <SearchIcon />
           <input
             type="text"
             placeholder="Type something here..."
             className="flex-1 rounded-md px-2 py-1 text-sm text-neutral-400 focus:outline-none"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={localTerm}
+            onChange={(e) => setLocalTerm(e.target.value)}
           />
           <button
+            type="button"
             onClick={handleToggleSearch}
             className="flex h-8 w-8 items-center justify-center rounded-full"
           >
             <XIcon className="text-neutral-400" />
           </button>
-        </div>
+        </form>
       )}
 
       <FilterDrawer
         title="Type"
-        options={repoTypes}
+        options={REPO_TYPES}
         selected={repoType}
         open={drawer === "type"}
         onSelect={(value) => {
@@ -73,7 +87,7 @@ export default function SearchBar() {
 
       <FilterDrawer
         title="Language"
-        options={languages}
+        options={LANGUAGES}
         selected={language}
         open={drawer === "language"}
         onSelect={(value) => {
