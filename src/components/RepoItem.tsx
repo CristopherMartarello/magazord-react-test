@@ -19,7 +19,7 @@ const RepoItem = ({ item }: RepoItemProps) => {
       <div className="flex items-center gap-1 text-lg">
         <span className="font-light">{item.full_name.split("/")[0]}</span>
         <span className="font-normal">/</span>
-        <span className="text-primary-400 truncate font-semibold">
+        <span className="text-primary-400 line-clamp-1 font-semibold">
           {item.name}
         </span>
       </div>
