@@ -35,7 +35,7 @@ const ProfileCard = () => {
     return <div>Carregando informações...</div>;
 
   return (
-    <div className="mt-8 flex max-w-[217px] flex-col items-center justify-center gap-1">
+    <div className="mt-8 flex max-w-full flex-col items-center justify-center gap-1">
       <div className="relative">
         <img
           src={user?.avatar_url}
@@ -48,45 +48,50 @@ const ProfileCard = () => {
       </div>
       <div className="mt-4 flex flex-col items-center text-center">
         <h1 className="text-xl font-bold text-black">{user?.name}</h1>
-        <p className="mt-1 text-sm font-normal break-words text-neutral-500 sm:text-[12px] md:text-base">
+        <p className="mt-1 text-center text-sm font-normal break-words text-neutral-400 sm:text-[12px] md:text-base">
           {user?.bio}
         </p>
       </div>
       <div className="text-primary-400 flex flex-col items-center">
-        <span className="mt-4">Informações Adicionais</span>
-        <ChevronDownIcon
-          className={`mb-2 h-6 w-6 transform transition-transform duration-200 ease-in-out ${collapse ? "rotate-180" : "rotate-0"}`}
-          onClick={() => handleAdditionalClickInfo()}
-        />
-        {collapse && (
-          <div className="flex min-h-[143px] min-w-[380px] flex-col gap-4 rounded-2xl bg-neutral-100 p-4">
-            <AditionalInfoLabel
-              icon={<EnterpriseIcon />}
-              text={user?.company ?? "Empresa não informada."}
-            />
-            <AditionalInfoLabel
-              icon={<LocationIcon />}
-              text={user?.location ?? "Localização não informada."}
-            />
-            <AditionalInfoLabel
-              icon={<ChainIcon />}
-              text={user?.blog ?? "Link não informado."}
-              isLink={true}
-            />
-            {socials && socials.length > 0 && (
-              <>
-                {socials.map((social) => (
-                  <AditionalInfoLabel
-                    key={social.provider}
-                    icon={getSocialIcon(social.provider)}
-                    text={social.url}
-                    isLink={true}
-                  />
-                ))}
-              </>
-            )}
-          </div>
-        )}
+        <div className="flex flex-col items-center md:hidden">
+          <span className="mt-4">Informações Adicionais</span>
+          <ChevronDownIcon
+            className={`mb-2 h-6 w-6 transform transition-transform duration-200 ease-in-out ${collapse ? "rotate-180" : "rotate-0"}`}
+            onClick={() => handleAdditionalClickInfo()}
+          />
+        </div>
+        <div
+          className={`flex w-full flex-col gap-4 rounded-2xl bg-neutral-100 p-4 md:mt-4 md:flex md:w-[280px] md:bg-transparent md:p-3 ${
+            collapse ? "flex" : "hidden"
+          }`}
+        >
+          <AditionalInfoLabel
+            icon={<EnterpriseIcon />}
+            text={user?.company ?? "Empresa não informada."}
+          />
+          <AditionalInfoLabel
+            icon={<LocationIcon />}
+            text={user?.location ?? "Localização não informada."}
+          />
+          <AditionalInfoLabel
+            icon={<ChainIcon />}
+            text={user?.blog ?? "Link não informado."}
+            isLink
+          />
+
+          {socials && socials.length > 0 && (
+            <>
+              {socials.map((social) => (
+                <AditionalInfoLabel
+                  key={social.provider}
+                  icon={getSocialIcon(social.provider)}
+                  text={social.url}
+                  isLink
+                />
+              ))}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

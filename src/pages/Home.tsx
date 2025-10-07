@@ -8,13 +8,15 @@ const Home = () => {
   return (
     <div className="flex min-h-screen flex-col bg-neutral-50 text-neutral-400">
       <Header />
-      <div className="flex flex-col items-center justify-start p-7">
-        <ProfileCard />
-        <div className="mt-8 flex w-full">
-          <Tabs />
+      <div className="flex flex-col items-center justify-start p-7 md:flex-row md:items-start md:gap-10">
+        <div className="w-full md:w-1/3">
+          <ProfileCard />
         </div>
-        <SearchBar />
-        <RepoList />
+        <div className="mt-8 flex w-full flex-col md:mt-10 md:w-2/3">
+          <Tabs />
+          <SearchBar />
+          <RepoList />
+        </div>
       </div>
     </div>
   );
