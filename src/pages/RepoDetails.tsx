@@ -4,13 +4,13 @@ import { ChevronDown } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const RepoDetails = () => {
-  const { name } = useParams<{ name: string }>();
+  const { owner, name } = useParams<{ owner: string; name: string }>();
   const navigate = useNavigate();
   const {
     data: repo,
     isLoading: isRepoLoading,
     error: isRepoError,
-  } = useGithubRepository(name);
+  } = useGithubRepository(owner, name);
 
   if (isRepoLoading) return <div>Carregando Repositório...</div>;
   if (isRepoError) return <div>Falha ao carregar Repositório...</div>;

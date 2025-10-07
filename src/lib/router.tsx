@@ -8,7 +8,7 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/repo/:name",
+    path: "/repo/:owner/:name",
     element: <RepoDetails />,
   },
 ]);

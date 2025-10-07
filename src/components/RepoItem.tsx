@@ -14,7 +14,7 @@ const RepoItem = ({ item }: RepoItemProps) => {
   return (
     <div
       className="flex flex-col space-y-3 border-b border-b-neutral-100 bg-white pb-5 text-black"
-      onClick={() => navigate(`/repo/${item.name}`)}
+      onClick={() => navigate(`/repo/${item.owner.login}/${item.name}`)}
     >
       <div className="flex items-center gap-1 text-lg">
         <span className="font-light">{item.full_name.split("/")[0]}</span>

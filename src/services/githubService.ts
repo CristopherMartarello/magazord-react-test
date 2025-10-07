@@ -33,9 +33,7 @@ export const getUserRepositories = async (tab: TabType) => {
   return data;
 };
 
-export const getGithubRepoByName = async (name: string) => {
-  const { data } = await api.get<GithubRepo>(
-    `/repos/${import.meta.env.VITE_GITHUB_USERNAME}/${name}`
-  );
+export const getGithubRepoByName = async (owner: string, name: string) => {
+  const { data } = await api.get<GithubRepo>(`/repos/${owner}/${name}`);
   return data;
 };
