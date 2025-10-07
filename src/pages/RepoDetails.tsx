@@ -50,18 +50,18 @@ const RepoDetails = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex flex-col border-b border-b-neutral-100 pb-3 text-sm font-light text-neutral-400">
+      <div className="mt-6 flex flex-col text-sm font-light text-neutral-400">
         <span>{repo.description ?? "Descrição não informada."}</span>
         <span className="mt-2 w-fit rounded-xl bg-neutral-100 px-2 py-1 text-neutral-400">
           {repo.language ?? "Linguagem N/A"}
         </span>
       </div>
-      <div className="mt-4 flex gap-14">
+      <div className="mt-4 flex gap-14 border-b border-b-neutral-100 pb-3">
         <RepoStatItem value={repo.stargazers_count} label={"Stars"} />
         <RepoStatItem value={repo.forks_count} label={"Forks"} />
         <RepoStatItem value={repo.open_issues} label={"Issues abertas"} />
       </div>
-      <div className="mt-8">
+      <div className="mt-4">
         {isIssuesError ? (
           <span className="text-error text-sm">
             Falha ao carregar Issues. Tente novamente mais tarde.
