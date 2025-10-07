@@ -44,9 +44,14 @@ const RepoDetails = () => {
             {repo.owner.login} /{" "}
           </span>
           <div className="flex items-center gap-1 text-3xl">
-            <span className="text-primary-400 truncate font-semibold">
+            <a
+              href={repo.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-400 truncate font-semibold"
+            >
               {repo.name}
-            </span>
+            </a>
           </div>
         </div>
       </div>

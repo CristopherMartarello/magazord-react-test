@@ -27,6 +27,7 @@ export type GithubRepo = {
   visibility: "public" | "private";
   mirror_url: string | null;
   open_issues: number;
+  html_url: string;
   owner: {
     avatar_url: string;
     login: string;
