@@ -1,4 +1,5 @@
 import RepoStatItem from "@/components/RepoStatItem";
+import { useGithubRepoIssues } from "@/hooks/useGithub/useGithubRepoIssues";
 import { useGithubRepository } from "@/hooks/useGithub/useGithubRepository";
 import { ChevronDown } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,6 +12,11 @@ const RepoDetails = () => {
     isLoading: isRepoLoading,
     error: isRepoError,
   } = useGithubRepository(owner, name);
+  const {
+    data: issues,
+    isLoading: isIssuesLoading,
+    error: isIssuesError,
+  } = useGithubRepoIssues(owner, name);
 
   if (isRepoLoading) return <div>Carregando Repositório...</div>;
   if (isRepoError) return <div>Falha ao carregar Repositório...</div>;
@@ -54,10 +60,23 @@ const RepoDetails = () => {
         <RepoStatItem value={repo.forks_count} label={"Forks"} />
         <RepoStatItem value={repo.open_issues} label={"Issues abertas"} />
       </div>
-      {repo.open_issues > 0 ? (
-        <div className="mt-6">Issues</div>
+      <div className="mt-6">Open Issues</div>
+      {isIssuesError ? (
+        <span className="text-error text-sm">
+          Falha ao carregar Issues. Tente novamente mais tarde.
+        </span>
+      ) : isIssuesLoading ? (
+        <span className="text-sm text-neutral-500">Carregando Issues...</span>
+      ) : issues && issues.length > 0 ? (
+        <div className="flex flex-col gap-3">
+          {issues.map((issue) => (
+            <p key={issue.id}>{issue.title}</p>
+          ))}
+        </div>
       ) : (
-        <div className="mt-6">Nenhuma Issue aberta no momento</div>
+        <span className="text-sm text-neutral-500">
+          Nenhuma Issue aberta nesse momento...
+        </span>
       )}
     </div>
   );

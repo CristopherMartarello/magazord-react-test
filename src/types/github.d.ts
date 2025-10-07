@@ -13,7 +13,8 @@ export type GithubSocialAccount = {
   provider: string;
   url: string;
 };
-export interface GithubRepo {
+
+export type GithubRepo = {
   id: number;
   name: string;
   full_name: string;
@@ -31,4 +32,27 @@ export interface GithubRepo {
     login: string;
     html_url: string;
   };
-}
+};
+
+export type GithubIssue = {
+  id: number;
+  number: number;
+  title: string;
+  state: "open" | "closed";
+  comments: number;
+  html_url: string;
+  created_at: string;
+  updated_at: string;
+  body?: string;
+  user: {
+    login: string;
+    avatar_url: string;
+    html_url?: string;
+  };
+  labels: {
+    id: number;
+    name: string;
+    color: string;
+    description?: string;
+  }[];
+};

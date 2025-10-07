@@ -1,6 +1,7 @@
 import type { TabType } from "@/store/githubStore";
 import { api } from "../lib/axios";
 import type {
+  GithubIssue,
   GithubRepo,
   GithubSocialAccount,
   GithubUser,
@@ -35,5 +36,12 @@ export const getUserRepositories = async (tab: TabType) => {
 
 export const getGithubRepoByName = async (owner: string, name: string) => {
   const { data } = await api.get<GithubRepo>(`/repos/${owner}/${name}`);
+  return data;
+};
+
+export const getGithubRepoIssues = async (owner: string, repo: string) => {
+  const { data } = await api.get<GithubIssue[]>(
+    `/repos/${owner}/${repo}/issues`
+  );
   return data;
 };
