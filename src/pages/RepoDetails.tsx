@@ -1,3 +1,4 @@
+import IssueItem from "@/components/IssueItem";
 import RepoStatItem from "@/components/RepoStatItem";
 import { useGithubRepoIssues } from "@/hooks/useGithub/useGithubRepoIssues";
 import { useGithubRepository } from "@/hooks/useGithub/useGithubRepository";
@@ -60,24 +61,25 @@ const RepoDetails = () => {
         <RepoStatItem value={repo.forks_count} label={"Forks"} />
         <RepoStatItem value={repo.open_issues} label={"Issues abertas"} />
       </div>
-      <div className="mt-6">Open Issues</div>
-      {isIssuesError ? (
-        <span className="text-error text-sm">
-          Falha ao carregar Issues. Tente novamente mais tarde.
-        </span>
-      ) : isIssuesLoading ? (
-        <span className="text-sm text-neutral-500">Carregando Issues...</span>
-      ) : issues && issues.length > 0 ? (
-        <div className="flex flex-col gap-3">
-          {issues.map((issue) => (
-            <p key={issue.id}>{issue.title}</p>
-          ))}
-        </div>
-      ) : (
-        <span className="text-sm text-neutral-500">
-          Nenhuma Issue aberta nesse momento...
-        </span>
-      )}
+      <div className="mt-8">
+        {isIssuesError ? (
+          <span className="text-error text-sm">
+            Falha ao carregar Issues. Tente novamente mais tarde.
+          </span>
+        ) : isIssuesLoading ? (
+          <span className="text-sm text-neutral-500">Carregando Issues...</span>
+        ) : issues && issues.length > 0 ? (
+          <div className="flex flex-col gap-3">
+            {issues.map((issue) => (
+              <IssueItem key={issue.id} issue={issue} />
+            ))}
+          </div>
+        ) : (
+          <span className="text-sm text-neutral-500">
+            Nenhuma Issue aberta nesse momento...
+          </span>
+        )}
+      </div>
     </div>
   );
 };
