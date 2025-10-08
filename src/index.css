@@ -19,6 +19,7 @@
   --color-header: #24292e;
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --breakpoint-mobile-l: 26.5rem;
 }
 
 @layer base {
