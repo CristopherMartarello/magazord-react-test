@@ -40,9 +40,9 @@ const ProfileCard = () => {
         <img
           src={user?.avatar_url}
           alt={`${user?.name}'s photo.`}
-          className="h-[104px] w-[104px] rounded-full"
+          className="h-[104px] w-[104px] rounded-full lg:h-[150px] lg:w-[150px]"
         />
-        <div className="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full bg-neutral-50 p-4 text-sm shadow">
+        <div className="absolute right-0 bottom-0 flex h-7 w-7 items-center justify-center rounded-full bg-neutral-50 p-4 text-sm shadow lg:h-10 lg:w-10">
           😎
         </div>
       </div>
@@ -61,7 +61,7 @@ const ProfileCard = () => {
           />
         </div>
         <div
-          className={`flex w-full flex-col gap-4 rounded-2xl bg-neutral-100 p-4 md:mt-4 md:flex md:w-[280px] md:bg-transparent md:p-3 ${
+          className={`flex w-full flex-col gap-4 rounded-2xl bg-neutral-100 p-4 md:mt-4 md:flex md:w-[250px] md:bg-transparent md:p-3 ${
             collapse ? "flex" : "hidden"
           }`}
         >

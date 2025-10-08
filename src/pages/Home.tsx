@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="flex min-h-screen flex-col bg-neutral-50 text-neutral-400">
       <Header />
-      <div className="flex flex-col items-center justify-start p-7 md:flex-row md:items-start md:gap-10">
+      <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center justify-start p-4 md:flex-row md:items-start md:gap-4 lg:p-0">
         <div className="w-full md:w-1/3">
           <ProfileCard />
         </div>
