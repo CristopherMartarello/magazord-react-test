@@ -32,47 +32,80 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="relative mt-4 w-full rounded-xl bg-neutral-100 px-3 py-3">
-      {!searchActive ? (
-        <div className="flex items-center gap-2">
+    <>
+      {/* input e botões de filtro para mobile (até md), sobrepostos */}
+      <div className="relative mt-4 w-full rounded-xl bg-neutral-100 px-3 py-3 md:hidden">
+        {!searchActive ? (
+          <div className="flex items-center gap-2">
+            <FilterButton
+              label="Type"
+              active={drawer === "type"}
+              onClick={() => setDrawer("type")}
+            />
+
+            <FilterButton
+              label="Language"
+              active={drawer === "language"}
+              onClick={() => setDrawer("language")}
+            />
+
+            <button
+              onClick={handleToggleSearch}
+              className="ml-auto flex h-8 w-8 items-center justify-center rounded-full"
+            >
+              <SearchIcon className="text-primary-400" />
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex items-center gap-2">
+            <SearchIcon className="text-primary-400" />
+            <input
+              type="text"
+              placeholder="Type something here..."
+              className="flex-1 rounded-md px-2 py-1 text-sm text-neutral-400 focus:outline-none"
+              value={localTerm}
+              onChange={(e) => setLocalTerm(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={handleToggleSearch}
+              className="flex h-8 w-8 items-center justify-center rounded-full"
+            >
+              <XIcon className="text-neutral-400" />
+            </button>
+          </form>
+        )}
+      </div>
+
+      {/* input e botões de filtro para telas maiores, separados */}
+      <div className="hidden w-full md:mt-4 md:flex md:flex-col md:gap-3">
+        <div className="mt-4 flex items-center gap-2">
           <FilterButton
             label="Type"
             active={drawer === "type"}
             onClick={() => setDrawer("type")}
           />
-
           <FilterButton
             label="Language"
             active={drawer === "language"}
             onClick={() => setDrawer("language")}
           />
-
-          <button
-            onClick={handleToggleSearch}
-            className="ml-auto flex h-8 w-8 items-center justify-center rounded-full"
-          >
-            <SearchIcon />
-          </button>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="flex items-center gap-2">
-          <SearchIcon />
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex w-full items-center gap-2"
+        >
+          <SearchIcon className="text-neutral-400" />
           <input
             type="text"
-            placeholder="Type something here..."
-            className="flex-1 rounded-md px-2 py-1 text-sm text-neutral-400 focus:outline-none"
+            placeholder="Search Here"
+            className="flex-1 rounded-md border-b border-b-neutral-100 px-2 py-1 text-lg text-neutral-400 focus:outline-none"
             value={localTerm}
             onChange={(e) => setLocalTerm(e.target.value)}
           />
-          <button
-            type="button"
-            onClick={handleToggleSearch}
-            className="flex h-8 w-8 items-center justify-center rounded-full"
-          >
-            <XIcon className="text-neutral-400" />
-          </button>
         </form>
-      )}
+      </div>
 
       <FilterDrawer
         title="Type"
@@ -95,6 +128,6 @@ export default function SearchBar() {
         }}
         onClose={() => setDrawer(null)}
       />
-    </div>
+    </>
   );
 }
