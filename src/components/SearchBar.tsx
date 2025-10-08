@@ -78,7 +78,7 @@ export default function SearchBar() {
       </div>
 
       {/* input e botões de filtro para telas maiores, separados */}
-      <div className="hidden w-full md:mt-4 md:flex md:flex-col md:gap-3">
+      <div className="hidden w-full md:mt-4 md:flex md:flex-col md:gap-3 lg:flex lg:flex-row-reverse lg:gap-12">
         <div className="mt-4 flex items-center gap-2">
           <FilterButton
             label="Type"
@@ -94,13 +94,13 @@ export default function SearchBar() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex w-full items-center gap-2"
+          className="mt-4 flex w-full items-center gap-2 md:border-b md:border-b-neutral-100 lg:border-b-neutral-200"
         >
           <SearchIcon className="text-neutral-400" />
           <input
             type="text"
             placeholder="Search Here"
-            className="flex-1 rounded-md border-b border-b-neutral-100 px-2 py-1 text-lg text-neutral-400 focus:outline-none"
+            className="flex-1 rounded-md px-2 py-1 text-lg text-neutral-400 focus:outline-none"
             value={localTerm}
             onChange={(e) => setLocalTerm(e.target.value)}
           />
