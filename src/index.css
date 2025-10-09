@@ -25,6 +25,7 @@
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
   --breakpoint-mobile-l: 26.5rem;
+  --transition-duration-50: 50ms;
 }
 
 @layer base {

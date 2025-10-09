@@ -5,6 +5,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+import FilterCheckboxItem from "./FilterCheckboxItem";
 
 interface FilterDrawerProps {
   title: string;
@@ -33,7 +34,7 @@ export function FilterDrawer({
 
   return (
     <Drawer open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DrawerContent className="min-h-screen bg-white shadow-lg transition-all duration-300">
+      <DrawerContent className="min-h-[80vh] bg-white shadow-lg transition-all duration-300">
         <DrawerHeader className="flex items-center justify-between">
           <DrawerTitle className="flex w-full justify-between text-lg">
             <span className="text-2xl font-bold text-black">{title}</span>
@@ -44,20 +45,17 @@ export function FilterDrawer({
         </DrawerHeader>
 
         <div className="flex flex-col gap-3 overflow-y-auto px-8 py-6">
-          {options.map((option) => (
-            <div
-              key={option}
-              className="flex cursor-pointer items-center gap-3"
-            >
-              <input
-                type="checkbox"
-                checked={selected.includes(option)}
-                onChange={() => handleToggleOption(option)}
-                className="h-4 w-4"
+          {options.map((option) => {
+            const isChecked = selected.includes(option);
+            return (
+              <FilterCheckboxItem
+                key={option}
+                label={option}
+                isChecked={isChecked}
+                onToggle={() => handleToggleOption(option)}
               />
-              <span className="text-base font-normal text-black">{option}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </DrawerContent>
     </Drawer>
