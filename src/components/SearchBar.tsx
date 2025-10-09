@@ -4,6 +4,7 @@ import { FilterDrawer } from "./FilterDrawer";
 import { SearchIcon, XIcon } from "../assets/icons";
 import { FilterButton } from "./FilterButton";
 import { REPO_TYPES, LANGUAGES } from "@/constants/githubFilters";
+import { FilterDropdown } from "./FilterDropdown";
 
 export default function SearchBar() {
   const {
@@ -80,15 +81,17 @@ export default function SearchBar() {
       {/* input e botões de filtro para telas maiores, separados */}
       <div className="hidden w-full md:mt-4 md:flex md:flex-col md:gap-3 lg:flex lg:flex-row-reverse lg:gap-12">
         <div className="mt-4 flex items-center gap-2 lg:gap-4">
-          <FilterButton
+          <FilterDropdown
             label="Type"
-            active={drawer === "type"}
-            onClick={() => setDrawer("type")}
+            options={REPO_TYPES}
+            selected={repoType}
+            onSelect={setRepoType}
           />
-          <FilterButton
+          <FilterDropdown
             label="Language"
-            active={drawer === "language"}
-            onClick={() => setDrawer("language")}
+            options={LANGUAGES}
+            selected={language}
+            onSelect={setLanguage}
           />
         </div>
 
@@ -107,14 +110,13 @@ export default function SearchBar() {
         </form>
       </div>
 
+      {/* DRAWERS (apenas para mobile e tablet) */}
       <FilterDrawer
         title="Type"
         options={REPO_TYPES}
         selected={repoType}
         open={drawer === "type"}
-        onSelect={(value) => {
-          setRepoType(value);
-        }}
+        onSelect={setRepoType}
         onClose={() => setDrawer(null)}
       />
 
@@ -123,9 +125,7 @@ export default function SearchBar() {
         options={LANGUAGES}
         selected={language}
         open={drawer === "language"}
-        onSelect={(value) => {
-          setLanguage(value);
-        }}
+        onSelect={setLanguage}
         onClose={() => setDrawer(null)}
       />
     </>
