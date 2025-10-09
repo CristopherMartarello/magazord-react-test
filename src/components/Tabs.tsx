@@ -6,7 +6,7 @@ const Tabs = () => {
   const { activeTab, setActiveTab, repoCount, starredCount } = useGithubStore();
 
   return (
-    <div className="mobile-l:gap-10 flex w-full justify-between md:justify-normal md:gap-10 lg:gap-16">
+    <div className="mobile-l:gap-10 flex w-full justify-between gap-8 md:justify-normal md:gap-10 lg:gap-16">
       <TabItem
         icon={<BookmarkIcon />}
         label={"Repositories"}
