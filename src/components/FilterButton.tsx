@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDownIcon } from "@/assets/icons";
 import { forwardRef } from "react";
 
 interface FilterButtonProps {

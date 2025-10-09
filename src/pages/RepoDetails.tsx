@@ -1,9 +1,9 @@
+import { ChevronDownIcon } from "@/assets/icons";
 import Header from "@/components/Header";
 import IssueItem from "@/components/IssueItem";
 import RepoStatItem from "@/components/RepoStatItem";
 import { useGithubRepoIssues } from "@/hooks/useGithub/useGithubRepoIssues";
 import { useGithubRepository } from "@/hooks/useGithub/useGithubRepository";
-import { ChevronDown } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const RepoDetails = () => {
@@ -34,7 +34,7 @@ const RepoDetails = () => {
             onClick={() => navigate("/")}
             className="flex w-fit items-center gap-2"
           >
-            <ChevronDown className="rotate-90" />
+            <ChevronDownIcon className="rotate-90" />
             Voltar
           </button>
           <div className="mt-8 flex items-center gap-4">
