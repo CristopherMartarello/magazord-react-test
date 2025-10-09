@@ -55,7 +55,7 @@ export function FilterDrawer({
                 onChange={() => handleToggleOption(option)}
                 className="h-4 w-4"
               />
-              <span className="text-base text-black">{option}</span>
+              <span className="text-base font-normal text-black">{option}</span>
             </div>
           ))}
         </div>

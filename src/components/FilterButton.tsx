@@ -15,7 +15,7 @@ export function FilterButton({ label, active, onClick }: FilterButtonProps) {
       <ChevronDownIcon
         className={`mr-2 h-4 w-4 transform text-white transition-transform duration-200 ease-in-out ${active ? "rotate-180" : "rotate-0"} `}
       />
-      <span className="text-sm">{label}</span>
+      <span className="text-sm lg:text-lg">{label}</span>
     </button>
   );
 }

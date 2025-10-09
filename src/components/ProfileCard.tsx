@@ -47,14 +47,16 @@ const ProfileCard = () => {
         </div>
       </div>
       <div className="mt-4 flex flex-col items-center text-center">
-        <h1 className="text-xl font-bold text-black">{user?.name}</h1>
-        <p className="mt-1 text-center text-sm font-normal break-words text-neutral-400 sm:text-[12px] md:text-base">
+        <h1 className="text-xl font-bold text-black lg:text-2xl">
+          {user?.name}
+        </h1>
+        <p className="mt-1 text-center text-sm font-normal break-words text-neutral-400 md:text-[12px] lg:text-base">
           {user?.bio}
         </p>
       </div>
       <div className="text-primary-400 flex flex-col items-center">
         <div className="flex flex-col items-center md:hidden">
-          <span className="mt-4">Informações Adicionais</span>
+          <span className="mt-4 text-sm">Informações Adicionais</span>
           <ChevronDownIcon
             className={`mb-2 h-6 w-6 transform transition-transform duration-200 ease-in-out ${collapse ? "rotate-180" : "rotate-0"}`}
             onClick={() => handleAdditionalClickInfo()}

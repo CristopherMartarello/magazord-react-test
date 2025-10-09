@@ -28,15 +28,15 @@ const RepoItem = ({ item }: RepoItemProps) => {
       </span>
       <div className="flex items-center gap-10">
         {activeTab === "repositories" ? (
-          <span className="flex items-center gap-2">
+          <span className="flex items-center gap-2 text-sm font-normal">
             <StarFilled />
             {item.stargazers_count}
           </span>
         ) : (
-          <span>{item.language ?? "N/A"}</span>
+          <span className="text-sm font-normal">{item.language ?? "N/A"}</span>
         )}
 
-        <span className="flex items-center gap-2">
+        <span className="flex items-center gap-2 text-sm font-normal">
           <BranchFork />
           {item.forks_count}
         </span>
