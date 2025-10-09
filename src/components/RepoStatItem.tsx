@@ -7,7 +7,7 @@ const RepoStatItem = ({ value, label }: RepoStatItemProps) => {
   return (
     <div className="flex flex-col items-start">
       <span className="text-3xl font-semibold text-black">{value}</span>
-      <span className="text-sm text-neutral-500">{label}</span>
+      <span className="text-sm text-neutral-500 md:text-base">{label}</span>
     </div>
   );
 };

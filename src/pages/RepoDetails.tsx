@@ -44,14 +44,16 @@ const RepoDetails = () => {
               className="h-[104px] w-[104px] rounded-full"
             />
             <div className="flex flex-col overflow-hidden sm:max-w-[80vw] md:flex-row md:items-center">
-              <div className="flex items-center gap-1 text-lg md:gap-2 md:text-2xl">
-                <span className="font-light">{repo.owner.login}</span>
-                <span className="font-normal">/</span>
+              <div className="flex flex-col gap-1 text-lg sm:flex-row sm:items-center sm:gap-2 sm:text-2xl">
+                <div className="flex gap-2">
+                  <span className="font-light">{repo.owner.login}</span>
+                  <span className="font-normal">/</span>
+                </div>
                 <a
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-400 line-clamp-1 font-semibold"
+                  className="text-primary-400 line-clamp-1 text-2xl font-semibold"
                 >
                   {repo.name}
                 </a>
@@ -59,7 +61,7 @@ const RepoDetails = () => {
             </div>
           </div>
         </div>
-        <div className="mt-6 flex flex-col text-sm font-light text-neutral-400">
+        <div className="mt-6 flex flex-col text-sm font-light text-neutral-400 md:text-base">
           <span>{repo.description ?? "Descrição não informada."}</span>
           <span className="mt-2 w-fit rounded-xl bg-neutral-100 px-2 py-1 text-neutral-400">
             {repo.language ?? "Linguagem N/A"}
@@ -70,15 +72,13 @@ const RepoDetails = () => {
           <RepoStatItem value={repo.forks_count} label={"Forks"} />
           <RepoStatItem value={repo.open_issues} label={"Issues abertas"} />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 text-sm md:text-base">
           {isIssuesError ? (
-            <span className="text-error text-sm">
+            <span className="text-error">
               Falha ao carregar Issues. Tente novamente mais tarde.
             </span>
           ) : isIssuesLoading ? (
-            <span className="text-sm text-neutral-500">
-              Carregando Issues...
-            </span>
+            <span className="text-neutral-500">Carregando Issues...</span>
           ) : issues && issues.length > 0 ? (
             <div className="flex flex-col gap-3">
               {issues.map((issue) => (
@@ -86,7 +86,7 @@ const RepoDetails = () => {
               ))}
             </div>
           ) : (
-            <span className="text-sm text-neutral-500">
+            <span className="text-neutral-500">
               Nenhuma Issue aberta nesse momento...
             </span>
           )}
