@@ -10,10 +10,19 @@ import {
 import { useGithubSocials } from "../hooks/useGithub/useGithubSocials";
 import { useGithubUser } from "../hooks/useGithub/useGithubUser";
 import AditionalInfoLabel from "./AdditionalInfoLabel";
+import Spinner from "./Spinner";
 
 const ProfileCard = () => {
-  const { data: user, isLoading: loadingUser } = useGithubUser();
-  const { data: socials, isLoading: loadingSocials } = useGithubSocials();
+  const {
+    data: user,
+    isLoading: loadingUser,
+    error: isUserError,
+  } = useGithubUser();
+  const {
+    data: socials,
+    isLoading: loadingSocials,
+    error: isSocialsError,
+  } = useGithubSocials();
   const [collapse, setCollapse] = useState(false);
 
   const handleAdditionalClickInfo = () => {
@@ -32,7 +41,17 @@ const ProfileCard = () => {
   };
 
   if (loadingUser || loadingSocials)
-    return <div>Carregando informações...</div>;
+    return (
+      <div className="mt-8 max-w-full">
+        <Spinner />
+      </div>
+    );
+  if (isUserError)
+    return <div className="mt-8 max-w-full">Erro ao carregar usuário...</div>;
+  if (isSocialsError)
+    return (
+      <div className="mt-8 max-w-full">Erro ao carregar informações...</div>
+    );
 
   return (
     <div className="mt-8 flex max-w-full flex-col items-center justify-center gap-1">

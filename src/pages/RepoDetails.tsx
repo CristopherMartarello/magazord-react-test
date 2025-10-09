@@ -2,6 +2,7 @@ import { ChevronDownIcon } from "@/assets/icons";
 import Header from "@/components/Header";
 import IssueItem from "@/components/IssueItem";
 import RepoStatItem from "@/components/RepoStatItem";
+import Spinner from "@/components/Spinner";
 import { useGithubRepoIssues } from "@/hooks/useGithub/useGithubRepoIssues";
 import { useGithubRepository } from "@/hooks/useGithub/useGithubRepository";
 import { useNavigate, useParams } from "react-router-dom";
@@ -20,9 +21,24 @@ const RepoDetails = () => {
     error: isIssuesError,
   } = useGithubRepoIssues(owner, name);
 
-  if (isRepoLoading) return <div>Carregando Repositório...</div>;
-  if (isRepoError) return <div>Falha ao carregar Repositório...</div>;
-  if (!repo) return <div>Nenhum repositório encontrado.</div>;
+  if (isRepoLoading)
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  if (isRepoError)
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        Falha ao carregar Repositório...
+      </div>
+    );
+  if (!repo)
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        Nenhum repositório encontrado.
+      </div>
+    );
 
   return (
     <div className="flex min-h-screen flex-col bg-neutral-50 text-neutral-400">
@@ -78,7 +94,7 @@ const RepoDetails = () => {
               Falha ao carregar Issues. Tente novamente mais tarde.
             </span>
           ) : isIssuesLoading ? (
-            <span className="text-neutral-500">Carregando Issues...</span>
+            <Spinner />
           ) : issues && issues.length > 0 ? (
             <div className="flex flex-col gap-3">
               {issues.map((issue) => (

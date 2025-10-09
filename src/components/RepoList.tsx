@@ -3,6 +3,7 @@ import { useGithubStore } from "@/store/githubStore";
 import RepoItem from "./RepoItem";
 import { useMemo } from "react";
 import { filterRepositories } from "@/utils/filterRepositories";
+import Spinner from "./Spinner";
 
 const RepoList = () => {
   const { repoType, language, searchTerm } = useGithubStore();
@@ -18,7 +19,11 @@ const RepoList = () => {
   }, [repos, repoType, language, searchTerm]);
 
   if (loadingRepos)
-    return <div className="mt-6 text-center">Carregando Repositórios...</div>;
+    return (
+      <div className="mt-6">
+        <Spinner />
+      </div>
+    );
 
   if (errorRepos)
     return (
