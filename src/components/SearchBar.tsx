@@ -7,14 +7,13 @@ import { REPO_TYPES, LANGUAGES } from "@/constants/githubFilters";
 import { FilterDropdown } from "./FilterDropdown";
 
 export default function SearchBar() {
-  const {
-    repoType,
-    language,
-    searchTerm,
-    setRepoType,
-    setLanguage,
-    setSearchTerm,
-  } = useGithubStore();
+  const repoType = useGithubStore((state) => state.repoType);
+  const language = useGithubStore((state) => state.language);
+  const searchTerm = useGithubStore((state) => state.searchTerm);
+  const setRepoType = useGithubStore((state) => state.setRepoType);
+  const setLanguage = useGithubStore((state) => state.setLanguage);
+  const setSearchTerm = useGithubStore((state) => state.setSearchTerm);
+
   const [drawer, setDrawer] = useState<"type" | "language" | null>(null);
   const [searchActive, setSearchActive] = useState(false);
   const [localTerm, setLocalTerm] = useState(searchTerm);

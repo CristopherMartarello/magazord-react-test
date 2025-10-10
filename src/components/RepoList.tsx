@@ -6,7 +6,9 @@ import { filterRepositories } from "@/utils/filterRepositories";
 import Spinner from "./Spinner";
 
 const RepoList = () => {
-  const { repoType, language, searchTerm } = useGithubStore();
+  const repoType = useGithubStore((state) => state.repoType);
+  const language = useGithubStore((state) => state.language);
+  const searchTerm = useGithubStore((state) => state.searchTerm);
 
   const {
     data: repos = [],

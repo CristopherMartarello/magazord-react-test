@@ -8,7 +8,7 @@ interface RepoItemProps {
 }
 
 const RepoItem = ({ item }: RepoItemProps) => {
-  const { activeTab } = useGithubStore();
+  const activeTab = useGithubStore((state) => state.activeTab);
   const navigate = useNavigate();
 
   return (

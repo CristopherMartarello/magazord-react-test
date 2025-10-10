@@ -3,7 +3,10 @@ import { useGithubStore } from "../store/githubStore";
 import TabItem from "./TabItem";
 
 const Tabs = () => {
-  const { activeTab, setActiveTab, repoCount, starredCount } = useGithubStore();
+  const activeTab = useGithubStore((state) => state.activeTab);
+  const setActiveTab = useGithubStore((state) => state.setActiveTab);
+  const repoCount = useGithubStore((state) => state.repoCount);
+  const starredCount = useGithubStore((state) => state.starredCount);
 
   return (
     <div className="mobile-l:gap-10 flex w-full justify-between gap-8 md:justify-normal md:gap-10 lg:gap-16">

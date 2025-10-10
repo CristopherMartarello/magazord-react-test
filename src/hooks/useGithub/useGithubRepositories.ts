@@ -4,7 +4,9 @@ import { useGithubStore } from "@/store/githubStore";
 import type { GithubRepo } from "@/types/github";
 
 export const useGithubRepositories = () => {
-  const { activeTab, setRepoCount, setStarredCount } = useGithubStore();
+  const activeTab = useGithubStore((state) => state.activeTab);
+  const setRepoCount = useGithubStore((state) => state.setRepoCount);
+  const setStarredCount = useGithubStore((state) => state.setStarredCount);
 
   return useQuery<GithubRepo[]>({
     queryKey: ["github", activeTab],
