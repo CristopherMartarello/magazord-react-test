@@ -25,10 +25,11 @@ A stack foi escolhida conforme os requisitos do desafio e com o intuito de cobri
 - **Vite**: Ferramenta de build moderna
 - **TailwindCSS**: Framework utilitário de CSS que permite estilização rápida e diretamente nas classes
 - **Zustand**: Biblioteca para gerenciamento de estado global, utilizado para controlar o estado da aplicação
-- **React Query (Tanstack)**: Gerenciamento de requisições assíncronas, controle de cache e sincronização de dados com a API do Github
+- **React Query (Tanstack)**: Gerenciamento de requisições assíncronas e controle de cache
+- **React Router**: Gerenciamento das rotas da aplicação
 - **Axios**: Cliente HTTP simples e eficiente para comunicação com a API do Github
 - **ShadCN UI**: Biblioteca de componentes acessíveis e estilizados com Tailwind, utilizado para alguns componentes da aplicação (Drawer e Popover)
-- **SVGR Icons**: Utilizado para convertes ícones exportados do Figma diretamente em componentes React, mantendo a fidelidade ao layout original
+- **SVGR Icons**: Utilizado para converter ícones exportados do Figma diretamente em componentes React, mantendo a fidelidade ao layout original
 - **ESLint**: Ferramenta de linting para identificar e corrigir problemas no código, garantindo consistência
 - **Prettier**: Formatador de código automático utilizado em conjunto com o ESLint
 - **Vercel**: Plataforma de deploy e hospedagem moderna, utilizada para públicar o projeto em produção
@@ -42,33 +43,33 @@ A stack foi escolhida conforme os requisitos do desafio e com o intuito de cobri
 
 ### Passos
 
-# 1. Clonar o repositório:
+### 1. Clonar o repositório:
 
 ```bash
     git clone https://github.com/CristopherMartarello/magazord-react-test.git
 ```
 
-# 2. Entrar na pasta do projeto e na branch main:
+### 2. Entrar na pasta do projeto e na branch main:
 
 ```bash
     cd magazord-react-test
     git checkout main
 ```
 
-# 3. Instale as dependências necessárias:
+### 3. Instale as dependências necessárias:
 
 ```bash
     npm install
 ```
 
-# 4. Criar um arquivo .env com as variáveis de ambiente:
+### 4. Criar um arquivo .env com as variáveis de ambiente:
 
 ```bash
     VITE_GITHUB_API_URL=https://api.github.com
     VITE_GITHUB_USERNAME=seu_usuario
 ```
 
-# 5. Rode o projeto em modo desenvolvimento:
+### 5. Rode o projeto em modo desenvolvimento:
 
 ```bash
     npm run dev
@@ -91,13 +92,14 @@ src/
  ├── types/            # Tipagens TypeScript (github.d.ts)
  ├── utils/            # Funções auxiliares reutilizáveis (formatações e filtros)
  ├── index.css         # Configuraões globais de estilo
- └── main.tsx          # Inicialização do React + QueryClient + Provider (entry point)
+ └── main.tsx          # Entry Point da aplicação
 ```
 
 ## 🧠 Decisões técnicas
 
 - **Gerenciamento de cache com React Query**: Evita requisições repetidas desnecessárias, melhora o tempo de resposta e mantém os dados atualizados com staleTime controlado (5 minutos).
-- **Zustand para controle de Estado Global**: Escolhido pelo requisito do desafio e pela simplicidade/performance de gerenciamento.
+- **Gerenciamento de rotas com React Router**: Escolhido para a criação de rotas e navegação de diferentes páginas da aplicação (Home e RepoDetails).
+- **Zustand para controle de Estado Global**: Escolhido pelo requisito do desafio e pela simplicidade/performance de gerenciamento de estado.
 - **Componentização modular**: Componentes independentes e reutilizáveis (FilterDropdown, FilterButton, Spinner, RepoItem, IssueItem, etc.) garantindo manutenção facilitada.
 - **Responsividade**: Layout fluido, com breakpoints personalizados (mobile-l) e ajustados para diferentes tamanhos de tela.
 - **SVGs com SVGR**: Permitiram o uso de ícones originais do Figma como componentes React, preservando o design e mantendo performance.
@@ -203,11 +205,11 @@ Inicialmente, o Popover não abria corretamente pois não recebia a ref do botã
 
 Para resolver isso, foi necessário refatorar o componente FilterButton para também aceitar referências via forwardRef.
 
-Essa refatoração permitiu a passagem automática da referência para o **<button>** que se encontra dentro do FilterButton, aí o Popover foi capaz de aplicar o trigger nele e abrir corretamente.
+Essa refatoração permitiu a passagem automática da referência para o **botão** que se encontra dentro do FilterButton, permitindo que Popover fosse capaz de aplicar o trigger nele e que abrisse corretamente.
 
 ### 5. Reutilização de componentes
 
-Durante o desenvolvimento dos filtros, percebi a repetição de lógica entre o FilterDrawer(mobile) e o FilterDropdown(desktop).
+Durante o desenvolvimento dos filtros, percebi a repetição de lógica entre o FilterDrawer (mobile) e o FilterDropdown (desktop).
 A solução foi criar o componente **FilterCheckboxItem** reutilizável, centralizando toda a lógica de renderização dos checkboxes e das opções de filtro dentro dele.
 
 Essa abstração melhorou a reusabilidade e manutenção, reduzindo códigos duplicados.
@@ -228,7 +230,7 @@ Durante o desenvolvimento, o foco foi manter o código limpo e escalável, prior
 
 - **DRY**: Me embasei nesse conceito para aumentar a lógica compartilhada e reusabilidade de código na minha aplicação. Por exemplo, a lógica compartilhada entre o FilterDrawer e o FilterDropdown foi extraída para um **componente reutilizável (FilterCheckboxItem)**.
 
-- **Early Returns**: Foram aplicadas práticas de **Early Returns** (retornos), especialmente em componentes que lidam com estados de carregamento ou erro:
+- **Early Returns**: Foram aplicadas práticas de **Early Returns** (retornos), especialmente em componentes que lidam com estados de carregamento ou erro, garantindo que o componente só renderizasse se os dados estivessem prontos:
 
 ```typescript
   if (isRepoLoading)
