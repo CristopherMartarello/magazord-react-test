@@ -13,7 +13,7 @@ const RepoItem = ({ item }: RepoItemProps) => {
 
   return (
     <div
-      className="hover:shadow-repo-item-hover flex w-full flex-col space-y-3 border-b border-b-neutral-100 bg-white py-5 text-black transition-all duration-200 ease-out hover:cursor-pointer hover:pl-8 hover:shadow-md lg:border-none"
+      className="hover:shadow-repo-item-hover flex w-full flex-col space-y-3 border-b border-b-neutral-100 bg-white py-5 text-black transition-all duration-300 ease-out hover:cursor-pointer hover:pl-8 hover:shadow-md lg:border-none"
       onClick={() => navigate(`/repo/${item.owner.login}/${item.name}`)}
     >
       <div className="flex items-center gap-1 text-lg">

@@ -11,7 +11,7 @@ const IssueItem = ({ issue }: IssueItemProps) => {
       href={issue.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="hover:shadow-repo-item-hover flex items-center justify-between gap-4 space-y-1 border-b border-b-neutral-100 bg-white py-5 text-black transition-all duration-200 ease-out hover:cursor-pointer hover:pl-8 hover:shadow-md lg:border-none"
+      className="hover:shadow-repo-item-hover flex items-center justify-between gap-4 space-y-1 border-b border-b-neutral-100 bg-white py-5 text-black transition-all duration-300 ease-out hover:cursor-pointer hover:pl-8 hover:shadow-md lg:border-none"
     >
       <div className="flex w-full flex-col">
         <h3 className="line-clamp-2 text-base font-normal text-black">

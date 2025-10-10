@@ -79,7 +79,7 @@ const ProfileCard = () => {
           {user?.bio}
         </p>
       </div>
-      <div className="text-primary-400 flex flex-col items-center">
+      <div className="text-primary-400 flex w-full flex-col items-center">
         <div className="flex flex-col items-center md:hidden">
           <span className="mt-4 text-sm">Informações Adicionais</span>
           <ChevronDownIcon
