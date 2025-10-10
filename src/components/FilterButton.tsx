@@ -13,7 +13,7 @@ export const FilterButton = forwardRef<HTMLButtonElement, FilterButtonProps>(
       <button
         ref={ref}
         onClick={onClick}
-        className="from-primary-500 to-primary-400 flex items-center rounded-full bg-gradient-to-r px-3 py-2 pr-5 text-sm font-normal text-white shadow-sm"
+        className="from-primary-500 to-primary-400 flex items-center rounded-full bg-gradient-to-r px-3 py-2 pr-5 text-sm font-normal text-white shadow-sm hover:cursor-pointer"
       >
         <ChevronDownIcon
           className={`mr-2 h-4 w-4 transform text-white transition-transform duration-200 ease-in-out ${active ? "rotate-180" : "rotate-0"} `}

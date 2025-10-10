@@ -22,7 +22,7 @@ const AdditionalInfoLabel = ({
         </span>
       ) : (
         <a
-          className="text-primary-400 truncate text-sm font-normal"
+          className="text-primary-400 hover:text-primary-600 truncate text-sm font-normal no-underline hover:underline"
           href={text}
           target="_blank"
           rel="noopener noreferrer"

@@ -11,10 +11,10 @@ const IssueItem = ({ issue }: IssueItemProps) => {
       href={issue.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-between gap-4 space-y-1 border-b border-b-neutral-100 bg-white pb-5 text-black"
+      className="hover:bg-repo-item-hover/15 flex items-center justify-between gap-4 space-y-1 border-b border-b-neutral-100 bg-white py-5 text-black transition-all duration-200 ease-out hover:cursor-pointer hover:pl-8"
     >
       <div className="flex w-full flex-col">
-        <h3 className="mt-2 line-clamp-2 text-base font-normal text-black">
+        <h3 className="line-clamp-2 text-base font-normal text-black">
           {issue.title}
         </h3>
 
@@ -28,7 +28,9 @@ const IssueItem = ({ issue }: IssueItemProps) => {
         </div>
       </div>
 
-      <ChevronDownIcon className="rotate-270 text-neutral-500" />
+      <span className="md:p-4">
+        <ChevronDownIcon className="rotate-270 text-neutral-500" />
+      </span>
     </a>
   );
 };

@@ -16,7 +16,7 @@ const TabItem = ({
   return (
     <div
       onClick={onTabClick}
-      className={`flex w-full items-center gap-3 pb-2 lg:w-fit ${isActive ? "border-b-secondary-500 border-b-2 text-black" : "text-neutral-400"}`}
+      className={`flex w-full items-center gap-3 pb-2 lg:w-fit ${isActive ? "border-b-secondary-500 border-b-2 text-black" : "text-neutral-400"} transition-all duration-50 ease-out hover:cursor-pointer`}
     >
       <span className="mobile-l:ml-2">{icon}</span>
       <span className="mobile-l:mr-2 text-base font-normal lg:text-lg">

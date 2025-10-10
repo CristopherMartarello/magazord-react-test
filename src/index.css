@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-primary-600: #0058a9;
   --color-primary-500: #0056a6;
   --color-primary-400: #0587ff;
   --color-secondary-500: #fd8c73;
@@ -22,6 +23,7 @@
 
   --color-error: #fe354d;
   --color-header: #24292e;
+  --color-repo-item-hover: #4f4f5026;
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
   --breakpoint-mobile-l: 26.5rem;

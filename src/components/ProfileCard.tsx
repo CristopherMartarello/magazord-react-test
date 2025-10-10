@@ -47,10 +47,16 @@ const ProfileCard = () => {
       </div>
     );
   if (isUserError)
-    return <div className="mt-8 max-w-full">Erro ao carregar usuário...</div>;
+    return (
+      <div className="text-error mt-8 max-w-full">
+        Erro ao carregar usuário...
+      </div>
+    );
   if (isSocialsError)
     return (
-      <div className="mt-8 max-w-full">Erro ao carregar informações...</div>
+      <div className="text-error mt-8 max-w-full">
+        Erro ao carregar informações...
+      </div>
     );
 
   return (

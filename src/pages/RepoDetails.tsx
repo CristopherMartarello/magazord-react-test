@@ -29,7 +29,7 @@ const RepoDetails = () => {
     );
   if (isRepoError)
     return (
-      <div className="flex h-screen w-full items-center justify-center">
+      <div className="text-error flex h-screen w-full items-center justify-center">
         Falha ao carregar Repositório...
       </div>
     );
@@ -48,7 +48,7 @@ const RepoDetails = () => {
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="flex w-fit items-center gap-2"
+            className="flex w-fit items-center gap-2 hover:cursor-pointer hover:text-neutral-500"
           >
             <ChevronDownIcon className="rotate-90" />
             Voltar
@@ -88,23 +88,23 @@ const RepoDetails = () => {
           <RepoStatItem value={repo.forks_count} label={"Forks"} />
           <RepoStatItem value={repo.open_issues} label={"Issues abertas"} />
         </div>
-        <div className="mt-4 text-sm md:text-base">
+        <div className="text-sm md:text-base">
           {isIssuesError ? (
-            <span className="text-error">
+            <div className="text-error mt-4">
               Falha ao carregar Issues. Tente novamente mais tarde.
-            </span>
+            </div>
           ) : isIssuesLoading ? (
             <Spinner />
           ) : issues && issues.length > 0 ? (
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col">
               {issues.map((issue) => (
                 <IssueItem key={issue.id} issue={issue} />
               ))}
             </div>
           ) : (
-            <span className="text-neutral-500">
+            <div className="mt-4 text-black">
               Nenhuma Issue aberta nesse momento...
-            </span>
+            </div>
           )}
         </div>
       </div>

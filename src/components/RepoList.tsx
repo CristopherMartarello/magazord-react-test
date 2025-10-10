@@ -29,11 +29,13 @@ const RepoList = () => {
 
   if (errorRepos)
     return (
-      <div className="mt-6 text-center">Erro ao carregar Repositórios...</div>
+      <div className="text-error mt-6 text-center">
+        Erro ao carregar Repositórios...
+      </div>
     );
 
   return (
-    <div className="mt-6 flex w-full max-w-md flex-col gap-4">
+    <div className="mt-6 flex w-full flex-col">
       {filteredRepos.length === 0 ? (
         <p className="text-center text-neutral-400">
           Nenhum repositório encontrado.
