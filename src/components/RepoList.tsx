@@ -35,7 +35,7 @@ const RepoList = () => {
     );
 
   return (
-    <div className="mt-6 flex w-full flex-col">
+    <div className="mt-6 flex w-full flex-col gap-3 lg:mb-6">
       {filteredRepos.length === 0 ? (
         <p className="text-center text-neutral-400">
           Nenhum repositório encontrado.

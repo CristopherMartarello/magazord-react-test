@@ -69,7 +69,7 @@ const RepoDetails = () => {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-primary-400 line-clamp-1 text-2xl font-semibold"
+                  className="text-primary-400 hover:text-primary-500 line-clamp-1 text-2xl font-semibold"
                 >
                   {repo.name}
                 </a>
@@ -96,7 +96,7 @@ const RepoDetails = () => {
           ) : isIssuesLoading ? (
             <Spinner />
           ) : issues && issues.length > 0 ? (
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-3 lg:mb-6">
               {issues.map((issue) => (
                 <IssueItem key={issue.id} issue={issue} />
               ))}
