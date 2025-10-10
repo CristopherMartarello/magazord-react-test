@@ -214,6 +214,13 @@ A solução foi criar o componente **FilterCheckboxItem** reutilizável, central
 
 Essa abstração melhorou a reusabilidade e manutenção, reduzindo códigos duplicados.
 
+## ⏳ Melhorias futuras
+
+- Adicionar paginação nas listagens de repositórios e issues.
+- Melhorar o estado de carregamento e de erros, com Skeletons e componentes personalizados (além do Spinner já implementado).
+- Implementar tema escuro (dark mode).
+- Adicionar testes unitários com Vitest.
+
 ## 📐 Arquitetura e Boas Práticas
 
 Durante o desenvolvimento, o foco foi manter o código limpo e escalável, priorizando clareza e reusabilidade. Para isso, adotei alguns passos importantes ao longo de toda a aplicação:
