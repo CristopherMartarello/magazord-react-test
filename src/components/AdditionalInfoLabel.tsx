@@ -1,13 +1,17 @@
+import { extractUsernameFromUrl } from "@/utils/extractUsernameFromUrl";
+
 interface AdditionalInfoLabelProps {
   icon: React.ReactNode;
   text: string;
   isLink?: boolean;
+  showFullUrl?: boolean;
 }
 
 const AdditionalInfoLabel = ({
   icon,
   text,
   isLink,
+  showFullUrl,
 }: AdditionalInfoLabelProps) => {
   return (
     <div className="flex w-full items-center gap-2 md:gap-3">
@@ -23,7 +27,7 @@ const AdditionalInfoLabel = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {text}
+          {showFullUrl ? text : extractUsernameFromUrl(text)}
         </a>
       )}
     </div>

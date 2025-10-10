@@ -98,6 +98,7 @@ const ProfileCard = () => {
             icon={<ChainIcon />}
             text={user?.blog ?? "Link não informado."}
             isLink
+            showFullUrl
           />
 
           {socials && socials.length > 0 && (
